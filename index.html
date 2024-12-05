@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Join The Game - MOBE GAME</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://assets.onecompiler.app/42swzbgaa/4324xpz7j/1000048826.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #FFFFFF;
+            text-align: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            width: 380px;
+            text-align: center;
+            box-shadow: 0 12px 45px rgba(0, 0, 0, 0.6);
+            transform: scale(0.95);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 34px;
+            color: #33cc33;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .join-btn, .exit-btn {
+            background-color: #33cc33;
+            color: #fff;
+            font-size: 20px;
+            padding: 18px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 15px;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s ease-in-out, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .join-btn:hover, .exit-btn:hover {
+            background-color: #28a728;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .join-btn:active, .exit-btn:active {
+            transform: translateY(2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .exit-btn {
+            background-color: #e60000;
+        }
+
+        .exit-btn:hover {
+            background-color: #d40000;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            display: none;
+            margin-top: 20px;
+            font-size: 25px;
+            color: #33cc33;
+        }
+
+        .spinner {
+            display: inline-block;
+            border: 4px solid transparent;
+            border-top: 4px solid #33cc33;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Exit Loading Animation */
+        .exit-loading {
+            display: none;
+            color: #fff;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        /* Thank You Message */
+        .thank-you-message {
+            display: none;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container" id="gameContainer">
+        <h1>Welcome to MOBE GAME!</h1>
+        <p>Click "Join" to start your adventure, or click "Exit" if you decide to leave.</p>
+        
+        <!-- Join Button with FontAwesome Icon -->
+        <a href="#" class="join-btn" id="joinBtn">
+            <i class="fa fa-gamepad" aria-hidden="true"></i> Join The Game
+        </a>
+        
+        <!-- Exit Button with FontAwesome Icon -->
+        <a href="#" class="exit-btn" id="exitBtn">
+            <i class="fa fa-times" aria-hidden="true"></i> Exit
+        </a>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div> Loading...
+        </div>
+
+        <!-- Exit Loading Animation -->
+        <div class="exit-loading" id="exitLoading">
+            <div class="spinner"></div> Exiting...
+        </div>
+
+        <!-- Thank You Message -->
+        <div class="thank-you-message" id="thankYouMessage">
+            Thank you for joining!
+        </div>
+    </div>
+
+    <script>
+        // Join button functionality
+        document.querySelector('.join-btn').addEventListener('click', function() {
+            document.getElementById('loading').style.display = 'block'; // Show loading spinner
+            setTimeout(function() {
+                window.location.href = "https://roy9957.github.io/MOBE-GAME/game.html";
+            }, 1500); // 1.5 second delay before redirect
+        });
+
+        // Exit button functionality
+        document.querySelector('.exit-btn').addEventListener('click', function() {
+            document.getElementById('exitLoading').style.display = 'block'; // Show exit loading animation
+            setTimeout(function() {
+                alert("You are exiting the game.");
+                document.getElementById('gameContainer').style.display = 'none'; // Hide entire container
+                document.getElementById('thankYouMessage').style.display = 'block'; // Show thank you message
+            }, 2000); // 2 second delay before hiding container and showing "Thank you"
+        });
+    </script>
+</body>
+</html>
